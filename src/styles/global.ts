@@ -30,7 +30,7 @@ html{
 }
 
 body{
-    background: var(---background);
+    background: #f0f2f5;
     -webkit-font-smoothing: antialiased;
 }
 
