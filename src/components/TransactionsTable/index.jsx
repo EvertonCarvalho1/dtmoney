@@ -43,7 +43,7 @@ export function TransactionTable(){
                             </td> 
                         </tr>
                  
-                    </tbody>
+                    </tbody> 
             </table>
         </Container>
     )
