@@ -1,33 +1,11 @@
-import { useEffect, useState } from "react";
-import { api } from "../../services/api";
+import { useContext } from "react";
+import { TransactionsContext } from "../../TransactionsContext";
 import { Container } from "./styles";
 
-interface Transaction {
-    id: number;
-    title: string;
-    amount: number;
-    type: string;
-    category: string;
-    createdAt: string; 
-}
 
 export function TransactionTable(){
-    const [transactions, setTransactions] = useState<Transaction[]>([])
-    //sempre que o estado for um vetor ou um objeto, devemos obrigatóriamente informar um formato pra eles
-
-    useEffect(()=> {
-
-        api.get('transactions')
-        .then((response) => setTransactions(response.data.transactions))
-
-        //Para o Fetch
-        //primeiro .then converte a resposta pra Json
-        //o segundo .then pega os dados convertidos e imprime no console
-
-        //Para o Axios
-        // o proprio axios já converte a resposta em json, então precisaremos apenas de um .then
-        
-    }, []);
+    
+    const transactions = useContext(TransactionsContext);
 
     return(
         <Container>
