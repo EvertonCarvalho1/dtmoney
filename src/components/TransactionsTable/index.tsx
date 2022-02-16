@@ -4,11 +4,11 @@ import { Container } from "./styles";
 
 interface Transaction {
     id: number;
-    title: String;
+    title: string;
     amount: number;
     type: string;
     category: string;
-    createdAt: String; 
+    createdAt: string; 
 }
 
 export function TransactionTable(){
@@ -50,13 +50,18 @@ export function TransactionTable(){
                                     {transactions.title}
                                 </td>
                                 <td className={transactions.type}>
-                                    {transactions.amount}
+                                    {new Intl.NumberFormat('pt-BR', {
+                                        style: 'currency',
+                                        currency: 'BRL'
+                                    }).format(transactions.amount)}
                                 </td> 
                                 <td>
                                     {transactions.category}
                                 </td> 
                                 <td>
-                                    {transactions.createdAt}
+                                    {new Intl.DateTimeFormat('pt-BR').format(
+                                        new Date(transactions.createdAt)
+                                        )}
                                 </td> 
                             </tr>
                         )
