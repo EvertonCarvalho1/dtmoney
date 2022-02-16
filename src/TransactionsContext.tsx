@@ -14,10 +14,24 @@ interface Transaction {
 interface TransactionProvideProps {
     children: ReactNode;
     //ReactNode aceita qualquer tipo de conteúdo valido paara o React, aceita tags html, jsx
+};
+
+interface TransactionInput {
+    type: string;
+    title: string;
+    amount: number;
+    category: string;
+};
+
+interface TransactionsContextData {
+    transactions: Transaction[];
+    createTransaction: (transaction: TransactionInput) => void;
 }
 
 //cria o contexto e exporta
-export const TransactionsContext = createContext<Transaction[]>([]);
+export const TransactionsContext = createContext<TransactionsContextData>(
+    {} as TransactionsContextData
+);
 
 
 //cria o provider para repassar os dados
@@ -32,8 +46,12 @@ export function TransactionProvider({children} : TransactionProvideProps) {
         .then((response) => setTransactions(response.data.transactions))
     }, []);
 
+    function createTransaction(transaction : TransactionInput) {
+        api.post('transactions', transaction)
+    }
+
     return (
-        <TransactionsContext.Provider value={transactions}>
+        <TransactionsContext.Provider value={{transactions, createTransaction}}>
             {children}
         </TransactionsContext.Provider>
     )
