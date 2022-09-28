@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/EvertonCarvalho1/dtmoney?color=119565&labelColor=471ac5">
+  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/EvertonCarvalho1/dtmoney?color=471ac5&labelColor=119565">
 </p>
 
 <h1 align="center">
