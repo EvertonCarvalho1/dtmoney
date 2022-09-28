@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {createServer, Model} from 'miragejs';
-import {App} from './App';
+import { createServer, Model } from 'miragejs';
+import { App } from './App';
 
 
 createServer({
@@ -12,9 +12,9 @@ createServer({
 
   seeds(server) {
     server.db.loadData({
-      transactions:[
+      transactions: [
         {
-          id:1,
+          id: 1,
           title: 'Desenvolvimento de website',
           type: 'deposit',
           category: 'Dev',
@@ -22,7 +22,7 @@ createServer({
           createdAt: new Date('2021-02-12 09:00:00'),
         },
         {
-          id:2,
+          id: 2,
           title: 'Aluguel',
           type: 'withdraw',
           category: 'Casa',
@@ -32,8 +32,8 @@ createServer({
       ]
     })
   },
-  
-  routes(){
+
+  routes() {
     this.namespace = 'api';
 
     this.get('/transactions', () => {
@@ -42,7 +42,7 @@ createServer({
 
     this.post('/transactions', (schema, request) => {
       const data = JSON.parse(request.requestBody);
-      
+
       return schema.create('transaction', data);
     });
   }

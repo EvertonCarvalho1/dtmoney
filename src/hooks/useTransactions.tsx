@@ -1,4 +1,4 @@
-import {createContext, ReactNode, useContext, useEffect, useState} from 'react';
+import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
 import { api } from '../services/api';
 
 
@@ -9,7 +9,7 @@ interface Transaction {
     amount: number;
     type: string;
     category: string;
-    createdAt: string; 
+    createdAt: string;
 };
 
 interface TransactionProvideProps {
@@ -38,30 +38,30 @@ const TransactionsContext = createContext<TransactionsContextData>(
 //cria o provider para repassar os dados
 
 //usa-se o children para indicar que o componente receberá componentes filhos
-export function TransactionProvider({children} : TransactionProvideProps) {
-    
+export function TransactionProvider({ children }: TransactionProvideProps) {
+
     const [transactions, setTransactions] = useState<Transaction[]>([])
 
-    useEffect(()=> {
+    useEffect(() => {
         api.get('transactions')
-        .then((response) => setTransactions(response.data.transactions))
+            .then((response: any) => setTransactions(response.data.transactions))
     }, []);
 
-    async function createTransaction(transactionInput : TransactionInput) {
-       const response = await api.post('transactions', {
-           ...transactionInput,
-           createdAt: new Date,
+    async function createTransaction(transactionInput: TransactionInput) {
+        const response = await api.post('transactions', {
+            ...transactionInput,
+            createdAt: new Date,
         });
-       const {transaction} = response.data;
+        const { transaction } = response.data;
 
-       setTransactions([
-           ...transactions,
-           transaction,
-       ]);
+        setTransactions([
+            ...transactions,
+            transaction,
+        ]);
     };
 
     return (
-        <TransactionsContext.Provider value={{transactions, createTransaction}}>
+        <TransactionsContext.Provider value={{ transactions, createTransaction }}>
             {children}
         </TransactionsContext.Provider>
     )
@@ -72,7 +72,7 @@ export function TransactionProvider({children} : TransactionProvideProps) {
 export function useTransactions() {
     const context = useContext(TransactionsContext);
 
-    return context; 
+    return context;
 }
 
 //sempre que o estado for um vetor ou um objeto, devemos obrigatóriamente informar um formato pra eles

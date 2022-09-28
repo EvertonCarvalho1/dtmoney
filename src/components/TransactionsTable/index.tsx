@@ -2,11 +2,11 @@ import { useTransactions } from "../../hooks/useTransactions";
 import { Container } from "./styles";
 
 
-export function TransactionTable(){
-    
-    const {transactions} = useTransactions();
+export function TransactionTable() {
 
-    return(
+    const { transactions } = useTransactions();
+
+    return (
         <Container>
             <table>
                 <thead>
@@ -21,9 +21,9 @@ export function TransactionTable(){
                 <tbody>
                     {transactions.map(transactions => {
                         //toda vez que é feito um map, o primeiro elemento desse map deve ter uma key unica
-                        return(
-                            <tr>
-                                <td key={transactions.id}>
+                        return (
+                            <tr key={transactions.id}>
+                                <td>
                                     {transactions.title}
                                 </td>
                                 <td className={transactions.type}>
@@ -31,20 +31,20 @@ export function TransactionTable(){
                                         style: 'currency',
                                         currency: 'BRL'
                                     }).format(transactions.amount)}
-                                </td> 
+                                </td>
                                 <td>
                                     {transactions.category}
-                                </td> 
+                                </td>
                                 <td>
                                     {new Intl.DateTimeFormat('pt-BR').format(
                                         new Date(transactions.createdAt)
-                                        )}
-                                </td> 
+                                    )}
+                                </td>
                             </tr>
                         )
-                    })}    
-                 
-                </tbody> 
+                    })}
+
+                </tbody>
             </table>
         </Container>
     )
