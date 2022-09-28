@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/EvertonCarvalho1/dtmoney?color=991f36&labelColor=0D133D">
+  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/EvertonCarvalho1/dtmoney?color=119565&labelColor=471ac5">
 </p>
 
 <h1 align="center">
@@ -23,7 +23,7 @@ Este projeto foi desenvolvido utilizando as seguintes tecnologias:
 -   [ ] ReactJS
 -   [ ] Typescript
 -   [ ] useState
--   [ ] useEfect
+-   [ ] useEffect
 -   [ ] Context API
 -   [ ] Styled Components
 -   [ ] Mirage JS
